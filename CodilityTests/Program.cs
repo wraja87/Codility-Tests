@@ -67,11 +67,20 @@ namespace CodilityTests
             //var CardA = "K2Q25";
             //var CardB = "23A84";
             //Console.WriteLine(CardWar_Anant(CardA, CardB));
+
+            #region CreativeAccounting
             var inputNumber = 12345;
-            Console.WriteLine(NikhilAsarkar(inputNumber.ToString()));
+            //Console.WriteLine(NikhilAsarkar(inputNumber.ToString())); 
+            Console.WriteLine(GajananGogurwar(inputNumber.ToString())); 
+            #endregion
             //int[] A = new int[] {8, 24, 3, 20, 1, 17 };
             //int[] A = new int[] { 7, 21, 5, 42, 3, 8 };
             //Console.WriteLine(GetHigeshtDeviation_Jayesh(A));
+            #region HoursTwoDigits
+            var ip1 = new DateTime(2018, 1, 1, 13, 13, 12); //"13:13:12";//"12:34:50";
+            var ip2 = new DateTime(2018, 1, 1, 13, 13, 15);//"13:13:15";// "13:01:01";
+            Console.WriteLine(DineshKanojiya(ip1.ToString(), ip2.ToString()));
+            #endregion
             Console.ReadLine();
         }
         #region Card War
@@ -145,23 +154,21 @@ namespace CodilityTests
             return val;
 
         }
-
-
-
         #endregion
-        public static int CardWar(string A, string B)
+        #region JohnDoe
+        public static int JohnDoe_CardWar(string A, string B)
         {
             int N = 0;
             var sanew = A.ToUpper().ToCharArray().ToArray();
             var sbnew = B.ToUpper().ToCharArray().ToArray();
             for (int i = 0; i < A.Length; i++)
             {
-                N = N + winner(sanew[i], sbnew[i]);
+                N = N + JohnDoe_winner(sanew[i], sbnew[i]);
             }
             return N;
         }
 
-        public static int winner(char a, char b)
+        public static int JohnDoe_winner(char a, char b)
         {
             String nset = "23456789TJQKA";
             var posA = nset.IndexOf(a);
@@ -171,8 +178,101 @@ namespace CodilityTests
                 return 0;
             return 1;
 
-        }
+        } 
+        #endregion
 
+        #region NiteshPatil
+
+//        public static int NiteshPatil(string A, string B)
+//        { 
+//            Encoding ascii = Encoding.ASCII;
+//        int a = A.Length;
+//int b = B.Length;
+//int count = 0; 
+//for (int i = 0; i < a; i++)
+// {
+// if(A[i]!=B[i])
+// {
+// switch(A[i])
+// {
+// case 'A':
+// if(B[i] != 'A')
+//    count = count + 1;
+//break;
+// case 'K':
+// if(B[i] != 'K' || B[i] != 'A')
+//count = count + 1;
+//break;
+// case 'Q':
+//     if(B[i] != 'Q' || B[i] != 'K' || B[i] !='A')
+//count = count + 1;
+//break;
+//case 'J':
+//if(B[i] != 'J' || B[i] != 'Q' || B[i] !='K' || B[i] != 'A')
+//count = count + 1;
+//break;
+// case 'T':
+// if(B[i] != 'T' || B[i] != 'Q' || B[i] !='K' || B[i] != 'A')
+//count = count + 1;
+//break;
+// case '9':
+//if(aswe.GetCharCount(B[i])<9)
+//{
+//count ++;
+//}
+//break;
+// case '8':
+//if(ascii.GetCharCount(B[i])]<8)
+//{
+//count ++;
+//}
+//break;
+// case '7':
+//if(aswe.GetCharCount(B[i])>7)
+//{
+//    count ++;
+//}
+//break;
+// case '6':
+//if(aswe.GetCharCount(B[i])>6)
+//{
+//count ++;
+//}
+//break;
+// case '5':
+//if(aswe.GetCharCount(B[i])>5)
+//{
+//count ++;
+//}
+//break;
+// case '4':
+//if(aswe.GetCharCount(B[i])>4)
+//{
+//count ++;
+//}
+//break;
+// case '3':
+//if(aswe.GetCharCount(B[i])>3)
+//{
+//count ++;
+//}
+//break;
+//case '2':
+//if(aswe.GetCharCount(B[i])>2)
+//{
+//count ++;
+//}
+//break;
+//};
+//}
+//}
+
+//return count;
+// }
+// }
+//        }
+        
+        #endregion
         #endregion
         #region Average Mean Distance
         /// <summary>
@@ -242,6 +342,43 @@ namespace CodilityTests
             }
             return Convert.ToInt32(retVal);
         }
+
+        public static int GajananGogurwar(string inputNumber)
+        {
+            int[] number = { 1, 2, 2, 8, 5 };
+            StringBuilder arr = new StringBuilder();
+            if (number.Length >= 0 && number.Length != 0)
+            {
+                for (int i = 0; i < number.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        arr.Append(number[i]);
+                    }
+                    else if (i == number.Length - 1)
+                    {
+                        arr.Append(number[i]);
+                    }
+                    else if (i == 1)
+                    {
+                        arr.Append(number[i]);
+                    }
+                    else if (i == number.Length - 2)
+                    {
+                        arr.Append(number[i]);
+                    }
+                    else
+                    {
+                        arr.Append(number[i]);
+                    }
+                }
+                Console.Write(arr);
+                int q = Convert.ToInt32(arr);
+                return q;
+            }
+            return 0;
+        }
+
         #endregion
         #region Even Sum Count
 
@@ -257,6 +394,75 @@ namespace CodilityTests
             // Copy temp back to arr[]
             for (i = 0; i < n; i++)
                 arr[i] = temp[i];
+        }
+
+        #endregion
+
+        #region TowDigitHours
+
+        private static int DineshKanojiya(string S, string T)
+        {
+            int res = 0;
+            try
+            {
+                //DateTime sdf = new DateTime();
+                DateTime date1 = DateTime.Parse(S);
+                DateTime date2 = DateTime.Parse(T);
+                TimeSpan diff = date2.TimeOfDay - date1.TimeOfDay;
+                //long diffSeconds = Convert.ToInt32(diff) / 1000 % 60;
+                long diffSeconds = diff.Seconds;// / 1000 % 60;
+                String[] result = new String[(((int)diffSeconds) + 2) - 1];
+                for (int i = 0; i < result.Length; i++)
+                {
+                    if (i == 0)
+                    {
+                        result[0] = S;
+                    }
+                    else
+                    {
+                        DateTime d1 = DateTime.Parse(result[0]);
+                        DateTime d = new DateTime(Convert.ToInt32(d1.TimeOfDay) + ((i) * 1000));
+                        result[i] = d.ToShortTimeString();
+                    }
+                }
+
+                HashSet<int> set = new HashSet<int>();
+                for (int i = 0; i < result.Length; i++)
+                {
+                    set = new HashSet<int>();
+                    String str = result[i];
+                    String[] strA = str.Split(':');
+                    for (int j = 0; j < strA.Length; j++)
+                    {
+                        String strD = strA[j];
+                        char[] c = strD.ToCharArray();
+                        char c1 = c[0];
+                        char c2 = c[1];
+                        if (c1 == c2)
+                        {
+
+                            set.Add((int)c1);
+                        }
+                        else
+                        {
+
+                            set.Add(c1);
+
+                            set.Add(c2);
+                        }
+                    }
+                    if (set.Count <= 2)
+                    {
+                        res++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+                //Console.WriteLine(Ex.ToString());
+            }
+            return res;
         }
 
         #endregion
