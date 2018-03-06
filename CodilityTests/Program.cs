@@ -64,14 +64,14 @@ namespace CodilityTests
             //Console.WriteLine(HighestPowerDivide(highestPowerInput));
             //int[] arr = new int[] { 9, 20, -3, -10 };
             //Console.WriteLine(GetHigeshtDeviation_Gaurav(arr));
-            //var CardA = "K2Q25";
-            //var CardB = "23A84";
-            //Console.WriteLine(CardWar_Anant(CardA, CardB));
+            var CardA = "K2Q25";
+            var CardB = "23A84";
+            Console.WriteLine(AakanshaGupta_CalculateScore(CardA, CardB));
 
             #region CreativeAccounting
             var inputNumber = 12345;
             //Console.WriteLine(NikhilAsarkar(inputNumber.ToString())); 
-            Console.WriteLine(GajananGogurwar(inputNumber.ToString())); 
+            //Console.WriteLine(GajananGogurwar(inputNumber.ToString()));
             #endregion
             //int[] A = new int[] {8, 24, 3, 20, 1, 17 };
             //int[] A = new int[] { 7, 21, 5, 42, 3, 8 };
@@ -79,11 +79,17 @@ namespace CodilityTests
             #region HoursTwoDigits
             var ip1 = new DateTime(2018, 1, 1, 13, 13, 12); //"13:13:12";//"12:34:50";
             var ip2 = new DateTime(2018, 1, 1, 13, 13, 15);//"13:13:15";// "13:01:01";
-            Console.WriteLine(DineshKanojiya(ip1.ToString(), ip2.ToString()));
+            //Console.WriteLine(DineshKanojiya(ip1.ToString(), ip2.ToString()));
+            #endregion
+            #region MyRegion
+            var F2_IP1 = "We test coders. Give us a try?";
+            var F2_IP2 = "Forget CVs..Save time . x x";
+            //Console.WriteLine(RahulSutar_Method(F2_IP1));
+            //Console.WriteLine(RahulSutar_Method(F2_IP2));
             #endregion
             Console.ReadLine();
         }
-        #region Card War
+        #region Cards War
 
         #region Anant Bandewar
 
@@ -178,100 +184,241 @@ namespace CodilityTests
                 return 0;
             return 1;
 
-        } 
+        }
         #endregion
+        private static int CardsWar_SanketKurade(string CardA, string CardB)
+        {
+            Array alc = new string[5];
+            Array bob = new string[5];
+            alc = CardA.Split(',');
+            bob = CardB.Split(',');
+            List<int> count = new List<int>();
+            //foreach (var item1 in alc)
+            //{
+            //    int a;
+            //    int b;
+            //    if (item1 == "j")
+            //    {
+            //        a = 11;
+            //    }
+            //    if (item1 == "K")
+            //    {
+            //        a = 11;
+            //    }
+            //    if (item1 == "Q")
+            //    {
+            //        a = 11;
+            //    }
+            //    if (item1 == "A")
+            //    {
+            //        a = 15;
+            //    }
+            //    foreach (var item2 in bob)
+            //    {
+            //        if (item1 ==                     "j")
+            //        {
+            //            b = 11;
+            //        }
+            //        if (item1 ==                    "K")
+            //        {
+            //            b = 11;
+            //        }
+            //        if (item1 ==                    "Q")
+            //        {
+            //            b = 11;
+            //        }
+            //        if (item1 ==                   "A")
+            //        {
+            //            b = 15;
+            //        }
+            //        if (a > b)
+            //        {
 
+            //            count.Add(1);
+            //        }
+            //    }
+            //}
+            return count.Count;
+        }
         #region NiteshPatil
 
-//        public static int NiteshPatil(string A, string B)
-//        { 
-//            Encoding ascii = Encoding.ASCII;
-//        int a = A.Length;
-//int b = B.Length;
-//int count = 0; 
-//for (int i = 0; i < a; i++)
-// {
-// if(A[i]!=B[i])
-// {
-// switch(A[i])
-// {
-// case 'A':
-// if(B[i] != 'A')
-//    count = count + 1;
-//break;
-// case 'K':
-// if(B[i] != 'K' || B[i] != 'A')
-//count = count + 1;
-//break;
-// case 'Q':
-//     if(B[i] != 'Q' || B[i] != 'K' || B[i] !='A')
-//count = count + 1;
-//break;
-//case 'J':
-//if(B[i] != 'J' || B[i] != 'Q' || B[i] !='K' || B[i] != 'A')
-//count = count + 1;
-//break;
-// case 'T':
-// if(B[i] != 'T' || B[i] != 'Q' || B[i] !='K' || B[i] != 'A')
-//count = count + 1;
-//break;
-// case '9':
-//if(aswe.GetCharCount(B[i])<9)
-//{
-//count ++;
-//}
-//break;
-// case '8':
-//if(ascii.GetCharCount(B[i])]<8)
-//{
-//count ++;
-//}
-//break;
-// case '7':
-//if(aswe.GetCharCount(B[i])>7)
-//{
-//    count ++;
-//}
-//break;
-// case '6':
-//if(aswe.GetCharCount(B[i])>6)
-//{
-//count ++;
-//}
-//break;
-// case '5':
-//if(aswe.GetCharCount(B[i])>5)
-//{
-//count ++;
-//}
-//break;
-// case '4':
-//if(aswe.GetCharCount(B[i])>4)
-//{
-//count ++;
-//}
-//break;
-// case '3':
-//if(aswe.GetCharCount(B[i])>3)
-//{
-//count ++;
-//}
-//break;
-//case '2':
-//if(aswe.GetCharCount(B[i])>2)
-//{
-//count ++;
-//}
-//break;
-//};
-//}
-//}
+        //        public static int NiteshPatil(string A, string B)
+        //        { 
+        //            Encoding ascii = Encoding.ASCII;
+        //        int a = A.Length;
+        //int b = B.Length;
+        //int count = 0; 
+        //for (int i = 0; i < a; i++)
+        // {
+        // if(A[i]!=B[i])
+        // {
+        // switch(A[i])
+        // {
+        // case 'A':
+        // if(B[i] != 'A')
+        //    count = count + 1;
+        //break;
+        // case 'K':
+        // if(B[i] != 'K' || B[i] != 'A')
+        //count = count + 1;
+        //break;
+        // case 'Q':
+        //     if(B[i] != 'Q' || B[i] != 'K' || B[i] !='A')
+        //count = count + 1;
+        //break;
+        //case 'J':
+        //if(B[i] != 'J' || B[i] != 'Q' || B[i] !='K' || B[i] != 'A')
+        //count = count + 1;
+        //break;
+        // case 'T':
+        // if(B[i] != 'T' || B[i] != 'Q' || B[i] !='K' || B[i] != 'A')
+        //count = count + 1;
+        //break;
+        // case '9':
+        //if(aswe.GetCharCount(B[i])<9)
+        //{
+        //count ++;
+        //}
+        //break;
+        // case '8':
+        //if(ascii.GetCharCount(B[i])]<8)
+        //{
+        //count ++;
+        //}
+        //break;
+        // case '7':
+        //if(aswe.GetCharCount(B[i])>7)
+        //{
+        //    count ++;
+        //}
+        //break;
+        // case '6':
+        //if(aswe.GetCharCount(B[i])>6)
+        //{
+        //count ++;
+        //}
+        //break;
+        // case '5':
+        //if(aswe.GetCharCount(B[i])>5)
+        //{
+        //count ++;
+        //}
+        //break;
+        // case '4':
+        //if(aswe.GetCharCount(B[i])>4)
+        //{
+        //count ++;
+        //}
+        //break;
+        // case '3':
+        //if(aswe.GetCharCount(B[i])>3)
+        //{
+        //count ++;
+        //}
+        //break;
+        //case '2':
+        //if(aswe.GetCharCount(B[i])>2)
+        //{
+        //count ++;
+        //}
+        //break;
+        //};
+        //}
+        //}
 
-//return count;
-// }
-// }
-//        }
-        
+        //return count;
+        // }
+        // }
+        //        }
+
+        #endregion
+        #region AakanshaGupta
+        public static int AakanshaGupta_CalculateScore(string Alec, string Bob)
+        {
+
+            int[] Alexdeck = new int[Alec.Length];
+            int[] Bobdeck = new int[Bob.Length];
+            int Alexscore = 0;
+            int BobScore = 0;
+
+            //Replace J,K,Q,A,T string with numbers
+            Alexdeck = AakanshaGupta_ReplaceString(Alexdeck, Alec);
+            Bobdeck = AakanshaGupta_ReplaceString(Bobdeck, Bob);
+
+            if (Alexdeck.Length == Bobdeck.Length)
+            {
+                //Players has equal cards
+                int i = 0;
+
+                foreach (int a in Alexdeck)
+                {
+                    if (Alexdeck[i] > Bobdeck[i])
+                    {
+                        Alexscore++;
+                    }
+                    else
+                    {
+                        BobScore++;
+                    }
+                }
+                if (Alexscore > BobScore)
+                {
+                    Console.WriteLine("Alex Wins game with" + Alexscore + " turns");
+                    Console.ReadLine();
+                    return Alexscore;
+                }
+                else
+                {
+                    Console.WriteLine("Bob Wins game with " + BobScore + " turns");
+                    Console.ReadLine();
+                    return Alexscore;
+                }
+            }
+            else
+            {
+                //Player does not have equal cards
+                Console.WriteLine("Error: Cards are not equal");
+                Console.ReadLine();
+                return 0;
+            }
+
+        }
+        public static int[] AakanshaGupta_ReplaceString(int[] arr, string player)
+        {
+            int[] deck = new int[arr.Length];
+
+            for (int i = 1; i < deck.Length; i++)
+            {
+                char[] c = player.ToCharArray();
+                if (c[i] == 'A')
+                {
+                    deck[i] = 14;
+                }
+                else if (c[i] == 'K')
+                {
+                    deck[i] = 13;
+                }
+                else if (c[i] == 'Q')
+                {
+                    deck[i] = 12;
+                }
+                else if (c[i] == 'J')
+                {
+                    deck[i] = 11;
+                }
+                else if (c[i] == 'T')
+                {
+                    deck[i] = 10;
+                }
+                else
+                {
+                    deck[i] = i;
+                }
+
+
+            }
+            return deck;
+        } 
         #endregion
         #endregion
         #region Average Mean Distance
@@ -397,7 +544,6 @@ namespace CodilityTests
         }
 
         #endregion
-
         #region TowDigitHours
 
         private static int DineshKanojiya(string S, string T)
@@ -463,6 +609,30 @@ namespace CodilityTests
                 //Console.WriteLine(Ex.ToString());
             }
             return res;
+        }
+
+        #endregion
+        #region LongestSentence
+        private static int RahulSutar_Method(string sentence)
+        {
+            char[] delimit = { '.', '?', '!' };
+            var sentenseArr = sentence.Split(delimit);
+            var maxWords = (from s in sentenseArr
+                            where !string.IsNullOrWhiteSpace(s)
+                            select s);
+            var cnt = maxWords.Count();
+            return cnt;
+        }
+
+        private static int LongestSentence_Mine(string sentence)
+        {
+            char[] delimit = { '.', '?', '!' };
+            var sentenseArr = sentence.Split(delimit);
+            var maxWords = (from s in sentenseArr
+                            where !string.IsNullOrWhiteSpace(s)
+                            select s.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length).ToList();
+            var cnt = maxWords.Max();
+            return cnt;
         }
 
         #endregion
