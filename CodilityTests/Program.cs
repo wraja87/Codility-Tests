@@ -64,28 +64,41 @@ namespace CodilityTests
             //Console.WriteLine(HighestPowerDivide(highestPowerInput));
             //int[] arr = new int[] { 9, 20, -3, -10 };
             //Console.WriteLine(GetHigeshtDeviation_Gaurav(arr));
+            #region CardsWar
             var CardA = "K2Q25";
             var CardB = "23A84";
-            Console.WriteLine(AakanshaGupta_CalculateScore(CardA, CardB));
-
+            //Console.WriteLine(AakanshaGupta_CalculateScore(CardA, CardB));            
+            #endregion
             #region CreativeAccounting
-            var inputNumber = 12345;
+            var inputNumber = 123456;
             //Console.WriteLine(NikhilAsarkar(inputNumber.ToString())); 
             //Console.WriteLine(GajananGogurwar(inputNumber.ToString()));
+            //Console.WriteLine(BalasahebKadam(inputNumber.ToString()));
+            //Console.WriteLine(ParvezAhmed(inputNumber));
+            Console.WriteLine(CreativeAccounting_BhushanFutane(inputNumber));
             #endregion
             //int[] A = new int[] {8, 24, 3, 20, 1, 17 };
             //int[] A = new int[] { 7, 21, 5, 42, 3, 8 };
             //Console.WriteLine(GetHigeshtDeviation_Jayesh(A));
+            #region TowDigitHours
+            var startTime = "15:15:00";
+            var endTime = "15:15:12";
+            //var startTime = "22:22:21";
+            //var endTime = "22:22:23";
+            //Console.WriteLine(WasimPoonawala_TowDigitHours(startTime, endTime));
+            #endregion
             #region HoursTwoDigits
             var ip1 = new DateTime(2018, 1, 1, 13, 13, 12); //"13:13:12";//"12:34:50";
             var ip2 = new DateTime(2018, 1, 1, 13, 13, 15);//"13:13:15";// "13:01:01";
             //Console.WriteLine(DineshKanojiya(ip1.ToString(), ip2.ToString()));
             #endregion
-            #region MyRegion
+            #region LongestSentence
             var F2_IP1 = "We test coders. Give us a try?";
-            var F2_IP2 = "Forget CVs..Save time . x x";
+            var F2_IP2 = "Forget CVs..Save time . x x ? x";
             //Console.WriteLine(RahulSutar_Method(F2_IP1));
             //Console.WriteLine(RahulSutar_Method(F2_IP2));
+            //Console.WriteLine(VatsalShah_Method(F2_IP2));
+            //Console.WriteLine(AnupKshirsagar_Method(F2_IP2));
             #endregion
             Console.ReadLine();
         }
@@ -418,8 +431,13 @@ namespace CodilityTests
 
             }
             return deck;
-        } 
+        }
         #endregion
+
+        private static int CardsWar_ShivrajSatpute(string CardA, string cardB)
+        {
+            return -1;
+        }
         #endregion
         #region Average Mean Distance
         /// <summary>
@@ -526,6 +544,88 @@ namespace CodilityTests
             return 0;
         }
 
+        public static int BalasahebKadam(string inputNumber)
+        {
+            char[] s = inputNumber.ToCharArray();
+            char[] shuffledNo = new char[inputNumber.Length];
+            int len = inputNumber.ToString().Length - 1;
+            int j = 0;
+            for (int i = 0; i < len; i++)
+            {
+                shuffledNo[j] = s[i];
+                shuffledNo[j + 1] = s[len - i];
+                i = i + 2;
+                j = j + 1;
+            }
+            return Convert.ToInt32(new string(shuffledNo));
+        }
+
+        public static int ParvezAhmed(int inputNumber)
+        {
+            int[] arr = ParvezAhmed_digitArr(inputNumber);
+            arr = ParvezAhmed_ShuffleArray(arr);
+            string arrstr = "";
+            for (int i = 0; i <= arr.Length - 1; i++)
+            {
+                arrstr += arr[i].ToString();
+            }
+            return int.Parse(arrstr);
+        }
+
+        public static int[] ParvezAhmed_ShuffleArray(int[] array)
+        {
+            Random r = new Random();
+            for (int i = array.Length; i > 0; i--)
+            {
+                int j = r.Next(i);
+
+
+                int k = array[j];
+                array[j] = array[i - 1];
+                array[i - 1] = k;
+            }
+            return array;
+
+        }
+
+        public static int[] ParvezAhmed_digitArr(int n)
+        {
+            if (n == 0) return new int[1] { 0 };
+
+            var digits = new List<int>();
+
+            for (; n != 0; n /= 10)
+                digits.Add(n % 10);
+
+            var arr = digits.ToArray();
+            Array.Reverse(arr);
+            return arr;
+        }
+
+        public static int CreativeAccounting_BhushanFutane(int A)
+        {
+            string numberString = A + "";
+            char[] numberCharArr = numberString.ToArray();
+            int[] numberArr = new int[numberString.Length];
+
+            for (int i = 0; i < numberCharArr.Length; i++)
+            {
+                numberArr[i] = Convert.ToInt32(numberCharArr[i] + "");
+            }
+            //Sort in Descending oder
+            for (int i = 0; i < numberArr.Length; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    int x = numberArr[i];
+                    numberArr[i] = numberArr[j];
+                    numberArr[j] = x;
+                }
+            }
+
+            string Lnum = string.Join("", numberArr);//Convert.ToString(numberArr.ToList());
+            return (Convert.ToInt32(Lnum));
+        }
         #endregion
         #region Even Sum Count
 
@@ -611,6 +711,61 @@ namespace CodilityTests
             return res;
         }
 
+        private static int AvinashSaxena(string S, string T)
+        {
+            string strHourS = S.Substring(0, 2);
+            string strMinS = S.Substring(3, 2);
+            string strSecS = S.Substring(6, 2);
+
+            string strHourT = T.Substring(0, 2);
+            string strMinT = T.Substring(3, 2);
+            string strSecT = T.Substring(6, 2);
+            int retVal = 0;
+            if (strHourS == strHourT)
+            {
+                if (strMinS == strMinT)
+                {
+                    if (strSecS == strSecT)
+                    {
+                        retVal = 1;
+                    }
+                    else
+                        retVal = 2;
+                }
+                retVal = 3;
+            }
+            return retVal;
+        }
+
+        private static int WasimPoonawala_TowDigitHours(string S, string T)
+        {
+            var intPoints = 0;
+            var startTime = new TimeSpan(int.Parse(S.Substring(0, 2)), int.Parse(S.Substring(3, 2)), int.Parse(S.Substring(6, 2)));
+            var endTime = new TimeSpan(int.Parse(T.Substring(0, 2)), int.Parse(T.Substring(3, 2)), int.Parse(T.Substring(6, 2)));
+            for (; startTime <= endTime; startTime = startTime.Add(TimeSpan.FromSeconds(1)))
+            {
+                var timeString = startTime.ToString("hhmmss");
+                var uniqueDigitsCount = WasimPoonawala_TowDigitHours_GetUniqeCharsCount(timeString);//timeString.ToCharArray().GroupBy(x => x).ToList();
+                if (uniqueDigitsCount < 3)
+                    intPoints++;
+            }
+            return intPoints;
+        }
+
+        private static int WasimPoonawala_TowDigitHours_GetUniqeCharsCount(string inputString)
+        {
+            var charArray = inputString.ToCharArray();
+            var charList = new List<char>();
+            for (int i = 0; i < charArray.Length; i++)
+            {
+                if (!charList.Contains(charArray[i]))
+                {
+                    charList.Add(charArray[i]);
+                }
+            }
+            return charList.Count;
+        }
+
         #endregion
         #region LongestSentence
         private static int RahulSutar_Method(string sentence)
@@ -624,6 +779,63 @@ namespace CodilityTests
             return cnt;
         }
 
+        private static int VatsalShah_Method(string sentence)
+        {
+            string[] stringDotArray = sentence.Split('.');
+            int maximumWordLength = 0;
+            foreach (string word in stringDotArray)
+            {
+                string wordDetail = word.TrimStart(' ').TrimEnd(' ').Replace(" ", " ");
+                if (wordDetail.Length > 0)
+                {
+                    string[] totalWords = wordDetail.Split(' ');
+                    if (totalWords.Count() > maximumWordLength)
+                    {
+                        maximumWordLength = totalWords.Count();
+                    }
+                    if (word.IndexOf("?") != -1)
+                    {
+                        string[] stringQuestionMarkArray = word.Split('?');
+                        foreach (string questionMark in stringQuestionMarkArray)
+                        {
+                            wordDetail = questionMark.TrimStart(' ').TrimEnd(' ').Replace(" ", "");
+                            if (wordDetail.Length > 0)
+                            {
+                                totalWords = wordDetail.Split(' ');
+                                if (totalWords.Count() > maximumWordLength)
+                                {
+                                    maximumWordLength = totalWords.Count();
+                                }
+                                if (wordDetail.IndexOf("!") != -1)
+                                {
+                                    string[] stringexclamationMarkArray = wordDetail.Split('!');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return maximumWordLength;
+        }
+
+        private static int AnupKshirsagar_Method(string sentence)
+        {
+            string[] strArray = sentence.Split(Convert.ToChar("."), Convert.ToChar("!"), Convert.ToChar("?")).ToArray();
+            int wordCount = 0;
+            foreach (string s in strArray)
+            {
+                if (!String.IsNullOrEmpty(s))
+                {
+                    string temp = s.Trim();
+                    int count = temp.Split(Convert.ToChar(" ")).Count();
+                    if (wordCount < count || wordCount == 0)
+                    {
+                        wordCount = count;
+                    }
+                }
+            }
+            return wordCount;
+        }
         private static int LongestSentence_Mine(string sentence)
         {
             char[] delimit = { '.', '?', '!' };
