@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,8 @@ namespace CodilityTests
     {
         static void Main(string[] args)
         {
+            GenStringForLongTest();
+
             //var input = "213";
             //var result = solution(int.Parse(input));
 
@@ -65,9 +68,12 @@ namespace CodilityTests
             //int[] arr = new int[] { 9, 20, -3, -10 };
             //Console.WriteLine(GetHigeshtDeviation_Gaurav(arr));
             #region CardsWar
-            var CardA = "K2Q25";
-            var CardB = "23A84";
-            //Console.WriteLine(AakanshaGupta_CalculateScore(CardA, CardB));            
+            var CardA = "23A84Q";
+            var CardB = "K2Q25J";
+            //Console.WriteLine(CardsWar_KapilNandgave(CardB, CardA));
+            //Console.WriteLine(CardsWar_SonaliMali(CardA, CardB));
+            //Console.WriteLine(CardsWar_AkshayPanchariya(CardA, CardB));
+            //Console.WriteLine(CardsWar_MohitDubey(CardA, CardB));
             #endregion
             #region CreativeAccounting
             var inputNumber = 123456;
@@ -75,7 +81,12 @@ namespace CodilityTests
             //Console.WriteLine(GajananGogurwar(inputNumber.ToString()));
             //Console.WriteLine(BalasahebKadam(inputNumber.ToString()));
             //Console.WriteLine(ParvezAhmed(inputNumber));
-            Console.WriteLine(CreativeAccounting_BhushanFutane(inputNumber));
+            //Console.WriteLine(CreativeAccounting_BhushanFutane(inputNumber));
+            //Console.WriteLine(CreativeAccounting_AbdulSheikh(inputNumber));
+            //Console.WriteLine(CreativeAccounting_MuskaanSethia(inputNumber));
+            //Console.WriteLine(CreativeAccounting_BhagyashriPatil(inputNumber));
+            //CreativeAccounting_MeghaModi(inputNumber);
+            //CreativeAccounting_PoojaMehta(inputNumber);
             #endregion
             //int[] A = new int[] {8, 24, 3, 20, 1, 17 };
             //int[] A = new int[] { 7, 21, 5, 42, 3, 8 };
@@ -100,7 +111,26 @@ namespace CodilityTests
             //Console.WriteLine(VatsalShah_Method(F2_IP2));
             //Console.WriteLine(AnupKshirsagar_Method(F2_IP2));
             #endregion
+            #region DecReprSeniorCoding
+            var DecReprSeniorCoding_Input = 213;
+            //Console.WriteLine(DecReprSeniorCoding_BhushanBand(DecReprSeniorCoding_Input));
+            //Console.WriteLine(DecReprSeniorCoding_InderSinghRawat(DecReprSeniorCoding_Input));
+            #endregion
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Press ENTER to exit.");
             Console.ReadLine();
+        }
+
+        private static void GenStringForLongTest()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                long ImportDocDetailsID = 50456;
+                var currentTicks = DateTime.Now.Ticks.ToString();
+                var tmpInt = currentTicks.Substring(currentTicks.Length - 9);//last 9 characters in ticks
+                var uniqueSureTaxCertificateId = long.Parse(ImportDocDetailsID.ToString() + tmpInt);
+                Console.WriteLine("{0} {1} {2} {3}", currentTicks, ImportDocDetailsID, tmpInt, uniqueSureTaxCertificateId);
+            }
         }
         #region Cards War
 
@@ -438,6 +468,241 @@ namespace CodilityTests
         {
             return -1;
         }
+
+        private static int CardsWar_JayashriGhadge(string CardA, string cardB)
+        {
+            return -1;
+        }
+
+        private static int CardsWar_MaheshGondugade(string CardA, string CardB)
+        {
+            int winCount = 0;
+            if ((!string.IsNullOrWhiteSpace(CardA) && !string.IsNullOrWhiteSpace(CardB)) && (CardA.Length == CardB.Length))
+            {
+                string[] arrCards = new string[13] { "2", "3", "4", "5", "6", "7", "8", "9", "T", "J", "Q", "K", "A" };
+
+                for (int i = 0; i < CardA.Length - 1; i++)
+                {
+                    string aInd = Convert.ToString(CardA.ElementAt(i));
+                    string bInd = Convert.ToString(CardB.ElementAt(i));
+
+                    int aIndex = Array.IndexOf(arrCards, aInd);
+                    int bIndex = Array.IndexOf(arrCards, bInd);
+
+                    if (aIndex > bIndex)
+                    {
+                        winCount = winCount + 1;
+                    }
+
+                }
+            }
+            return winCount;
+
+        }
+
+        private static int CardsWar_KapilNandgave(string A, string B)
+        {
+            int totalSumA = 0; int totalSumB = 0;
+            var chars = A.ToCharArray();
+            var chars1 = B.ToCharArray();
+            int AliceCount = 0, blowcount = 0;
+            for (int ctr = 0, ctr1 = 0; ctr < chars.Length && ctr1 < chars1.Length; ctr++, ctr1++)
+            {
+                totalSumA = CardsWar_MaheshGondugade_Checkkar(chars[ctr]);
+                totalSumB = CardsWar_MaheshGondugade_Checkkar(chars1[ctr1]);
+                if (totalSumA > totalSumB)
+                {
+                    AliceCount += 1;
+                }
+                else
+                {
+                    blowcount += 1;
+                }
+            }
+            if (AliceCount > blowcount)
+            {
+                return AliceCount;
+            }
+            else
+            {
+                return blowcount;
+            }
+        }
+
+        private static int CardsWar_SonaliMali(string A, string B)
+        {
+            string[] cardPrioritySeq = new string[13];
+            cardPrioritySeq[0] = "A";
+            cardPrioritySeq[1] = "K";
+            cardPrioritySeq[2] = "Q";
+            cardPrioritySeq[3] = "J";
+            cardPrioritySeq[4] = "T";
+            cardPrioritySeq[5] = "9";
+            cardPrioritySeq[6] = "8";
+            cardPrioritySeq[7] = "7";
+            cardPrioritySeq[8] = "6";
+            cardPrioritySeq[9] = "5";
+            cardPrioritySeq[10] = "4";
+            cardPrioritySeq[11] = "3";
+            cardPrioritySeq[12] = "2";
+            int alecWinCount = 0;
+            for (int i = 0; i < A.Length; i++)
+            {
+                if (A[i] == B[i])
+                    continue;
+                int alecIndex = Array.IndexOf(cardPrioritySeq, Convert.ToString(A[i]));
+                int bobIndex = Array.IndexOf(cardPrioritySeq, Convert.ToString(B[i]));
+                if (alecIndex < bobIndex)
+                    alecWinCount = alecWinCount + 1;
+            }
+            return alecWinCount;
+        }
+
+        private static int CardsWar_MaheshGondugade_Checkkar(char c)
+        {
+            int val = 0;
+            var isNumeric = int.TryParse(c.ToString(), out val);
+            if (isNumeric)
+                val = (int)char.GetNumericValue(c);
+            else if (c == 'A')
+                val = 14;
+            else if (c == 'K')
+                val = 13;
+            else if (c == 'Q')
+                val = 12;
+            else if (c == 'j')
+                val = 11;
+            return val;
+        }
+
+        private static int CardsWar_AkshayPanchariya(string A, string B)
+        {
+            int count = 0;
+            A = A.ToUpper();
+            B = B.ToUpper();
+
+            List<char> Alace = new List<char>();
+            List<char> Bob = new List<char>();
+
+            foreach (char c in A)
+            {
+                Alace.Add(c);
+            }
+            foreach (char c in B)
+            {
+                Bob.Add(c);
+            }
+
+            if ((Alace.Count < 6) || (Bob.Count < 6))
+            {
+                return -1;
+            }
+
+            if (Alace.Count != Bob.Count)
+            {
+                return 0;
+            }
+            for (int p = 0; p < Alace.Count; p++)
+            {
+                if (CardsWar_AkshayPanchariya_GetNumber(Alace[p]) != 'S')
+                {
+                    Alace[p] = CardsWar_AkshayPanchariya_GetNumber(Alace[p]);
+                }
+
+            }
+            for (int p = 0; p < Bob.Count; p++)
+            {
+                if (CardsWar_AkshayPanchariya_GetNumber(Bob[p]) != 'S')
+                {
+                    Bob[p] = CardsWar_AkshayPanchariya_GetNumber(Bob[p]);
+                }
+
+            }
+
+
+            for (int k = 0; k < Alace.Count; k++)
+            {
+                if (Alace[k] > Bob[k])
+                {
+                    count++;
+                }
+
+            }
+
+
+
+            return count;
+        }
+
+        public static char CardsWar_AkshayPanchariya_GetNumber(char i)
+        {
+            //As it is char can not use Double digit number and cant store number from 2 to 9 hence 
+            //Can not assign Asccii value of alphabets as its is not correct order
+            //assigning ascii values of special character
+            if (i == 'A')
+                return '@';
+            else if (i == 'K')
+                return '?';
+            else if (i == 'Q')
+                return '>';
+            else if (i == 'J')
+                return '=';
+            else
+                return 'S';
+        }
+
+        private static int CardsWar_MohitDubey(string A, string B)
+        {
+            var AlecCards = A.ToArray();
+            var BobCards = B.ToArray();
+            int winCount = 0;
+            for (int i = 0; i < AlecCards.Length; i++)
+            {
+                if (AlecCards[i].ToString() == "A")
+                {
+                    winCount = winCount + 1;
+                }
+                if (AlecCards[i].ToString() == "J" || AlecCards[i].ToString() == "T" || AlecCards[i].ToString() == "Q"
+                || AlecCards[i].ToString() == "K")
+                {
+                    if (BobCards[i].ToString() == "2" || BobCards[i].ToString() == "3" || BobCards[i].ToString() == "4"
+                    || BobCards[i].ToString() == "5" || BobCards[i].ToString() == "6" || BobCards[i].ToString() == "7" ||
+                    BobCards[i].ToString() == "8" || BobCards[i].ToString() == "9")
+                    {
+                        winCount = winCount + 1;
+                    }
+                }
+                if (AlecCards[i].ToString() == "K" && (BobCards[i].ToString() == "T" || BobCards[i].ToString() ==
+                "J" || BobCards[i].ToString() == "Q"))
+                {
+                    winCount = winCount + 1;
+                }
+                if (AlecCards[i].ToString() == "Q" && (BobCards[i].ToString() == "T" || BobCards[i].ToString() ==
+                "J"))
+                {
+                    winCount = winCount + 1;
+                }
+                if (AlecCards[i].ToString() == "J" && (BobCards[i].ToString() == "T"))
+                {
+                    winCount = winCount + 1;
+                }
+                if (AlecCards[i].ToString() == "2" || AlecCards[i].ToString() == "3" || AlecCards[i].ToString() ==
+                "4" || AlecCards[i].ToString() == "5" || AlecCards[i].ToString() == "6" || AlecCards[i].ToString() == "7" ||
+                AlecCards[i].ToString() == "8" || AlecCards[i].ToString() == "9")
+                {
+                    if (BobCards[i].ToString() == "2" || BobCards[i].ToString() == "3" || BobCards[i].ToString() ==
+                    "4" || BobCards[i].ToString() == "5" || BobCards[i].ToString() == "6" || BobCards[i].ToString() == "7" ||
+                    BobCards[i].ToString() == "8" || BobCards[i].ToString() == "9")
+                    {
+                        if (Convert.ToInt32(AlecCards[i].ToString()) > Convert.ToInt32(BobCards[i].ToString()))
+                        {
+                            winCount = winCount + 1;
+                        }
+                    }
+                }
+            }
+            return winCount;
+        }
         #endregion
         #region Average Mean Distance
         /// <summary>
@@ -626,6 +891,187 @@ namespace CodilityTests
             string Lnum = string.Join("", numberArr);//Convert.ToString(numberArr.ToList());
             return (Convert.ToInt32(Lnum));
         }
+
+        public static int CreativeAccounting_BikramC(int A)
+        {
+            var arr = A.ToString().Select(d => int.Parse(d.ToString())).ToArray();
+
+            var length = arr.Length;
+
+            var result = new StringBuilder(string.Empty);
+
+            for (var i = 0; i <= ((length / 2) - 1); i++)
+            {
+                result.Append(arr[i]);
+                result.Append(arr[(length - 1) - i]);
+            }
+
+            if (length % 2 != 0)
+            {
+                result.Append(arr[(length / 2)]);
+            }
+
+            return int.Parse(result.ToString());
+        }
+
+        public static int CreativeAccounting_AbdulSheikh(int A)
+        {
+            String holder = A.ToString();
+            char[] Sourcearray = holder.ToCharArray();
+            int[] Intsequence = Sourcearray.Select(c => Convert.ToInt32(c.ToString())).ToArray();
+            int[] Finalstore = new int[Intsequence.Length];
+            return CreativeAccounting_AbdulSheikh_GetIntArray(Intsequence, Intsequence.Length);
+        }
+
+        public static int CreativeAccounting_AbdulSheikh_GetIntArray(int[] arr, int n)
+        {
+            int[] temp = new int[n];
+            int first = 0;
+            int last = n - 1;
+            //last= 5
+            bool flag = true;
+            //n = 6
+            for (int i = 0; i < n; i++)
+            {
+                if (flag)
+                    temp[i] = arr[first++];
+                else
+                    temp[i] = arr[last--];
+
+                flag = !flag;
+            }
+
+            for (int i = 0; i < n; i++)
+                arr[i] = temp[i];
+
+            Console.WriteLine("\nModified Array");
+            for (int i = 0; i < arr.Length; i++)
+                Console.Write(arr[i] + " ");
+            string a = "";
+            int output;
+            foreach (int test in arr)
+            {
+                a += test.ToString();
+            }
+
+            output = int.Parse(a);
+            return output;
+        }
+
+        public static int CreativeAccounting_PranjalWalzade(string A)
+        {
+            int out12; string out13 = null;
+            int len = A.Length;
+
+            for (int i = 0; i < len; i++)
+            {
+                if (out13.Length != len)
+                {
+                    out12 = i + 1;
+                    out13 += out12.ToString();
+                    char cLastCharacter = A[A.Length - (i + 1)];
+                    out13 += cLastCharacter.ToString();
+                }
+            }
+            int out14 = (int.Parse(out13));
+            return out14;
+        }
+
+        public static int CreativeAccounting_MuskaanSethia(int numberToShuffle)
+        {
+            try
+            {
+                var number = numberToShuffle.ToString();
+                int front = 0;
+                int back = number.Length - 1;
+                string shuffledString = String.Empty;
+
+                while (front <= back)
+                {
+
+                    shuffledString += number[front];
+                    front++;
+                    if (!(front - 1 == back))
+                    {
+                        shuffledString += number[back];
+                        back--;
+                    }
+                }
+                return Convert.ToInt32(shuffledString);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static string CreativeAccounting_BhagyashriPatil(int A)
+        {
+            var inputnum = A;
+            int firstindex = 0;
+            int lastindex = inputnum.ToString().Length;
+            var outputnum = "";
+            for (int i = 1; i <= (inputnum.ToString().Length / 2) + 1; i++)
+            {
+                outputnum = outputnum + inputnum.ToString().Substring(firstindex, 1) +
+                inputnum.ToString().Substring((lastindex - 1), 1);
+                firstindex += 1;
+                lastindex -= 1;
+            }
+            // Console.WriteLine(outputnum);
+            // Console.ReadLine();
+            return outputnum;
+        }
+
+        public static void CreativeAccounting_MeghaModi(int No)
+        {
+            int[] str = { No };
+            int NofLength = Convert.ToString(No).Length;
+            string Value = Convert.ToString(No);
+            string NewValue = string.Empty;
+            for (int i = 1; i < NofLength; i++)
+            {
+                for (int j = NofLength - 1; j > 1; j--)
+                {
+                    NewValue = (Convert.ToString(Value[j]));
+                    Console.WriteLine(Value[j]);
+                }
+                string s1 = (Convert.ToString(Value[i]));
+                Console.WriteLine(Value[i]);
+                // Console.WriteLine(NewValue.ToString());
+            }
+        }
+
+        public static int CreativeAccounting_PoojaMehta(int A)
+        {
+            char[] str = Array.ConvertAll(A.ToString().ToArray(), x => (char)x);
+            int[] numbers = Array.ConvertAll(str, c => (int)char.GetNumericValue(c));
+
+            int length = numbers.Length;
+
+            if (length >= 2)
+            {
+                int n = length - 1;
+                int i = 0;
+                int current = 0;
+                int[] shuffled = new int[length];
+
+                do
+                {
+                    shuffled[current++] = numbers[i];
+                    shuffled[current++] = numbers[n - i];
+                    i++;
+                } while (i < length / 2);
+
+                if (length % 2 != 0)
+                    shuffled[n] = numbers[current - 1];
+
+                var res = shuffled.Select((t, j) => t * Convert.ToInt32(Math.Pow(10, shuffled.Length - j - 1))).Sum();
+                return res;
+            }
+            return numbers[0];
+        }
         #endregion
         #region Even Sum Count
 
@@ -766,6 +1212,13 @@ namespace CodilityTests
             return charList.Count;
         }
 
+
+        private static int TowDigitHours_Jyotsna(string S, string T)
+        {
+            TimeSpan duration = DateTime.Parse(T).Subtract(DateTime.Parse(S));
+            int i = duration.Seconds;
+            return i;
+        }
         #endregion
         #region LongestSentence
         private static int RahulSutar_Method(string sentence)
@@ -846,6 +1299,119 @@ namespace CodilityTests
             var cnt = maxWords.Max();
             return cnt;
         }
+
+        #endregion
+
+        #region DecReprSeniorCoding
+
+        public static int DecReprSeniorCoding_AkshayPanchariya(int N)
+        {
+            int x = N;
+            List<int> al = new List<int>();
+            string s = x.ToString();
+            int len = s.Length;
+            string digit1 = s[0].ToString();
+            string digit2 = s[1].ToString();
+            string digit3 = s[2].ToString();
+            string Combination1 = digit1 + digit2 + digit3;
+            string Combination2 = digit1 + digit3 + digit2;
+            string Combination3 = digit3 + digit2 + digit1;
+            string Combination4 = digit3 + digit1 + digit2;
+            string Combination5 = digit2 + digit1 + digit3;
+            string Combination6 = digit2 + digit3 + digit2;
+            int Num1 = Int32.Parse(Combination1);
+            int Num2 = Int32.Parse(Combination2);
+            int Num3 = Int32.Parse(Combination3);
+            int Num4 = Int32.Parse(Combination4);
+            int Num5 = Int32.Parse(Combination5);
+            int Num6 = Int32.Parse(Combination6);
+            al.Add(Num1);
+            al.Add(Num2);
+            al.Add(Num3);
+            al.Add(Num4);
+            al.Add(Num5);
+            al.Add(Num6);
+            int MaxComb = al.Max();
+            return MaxComb;
+        }
+
+        public static int DecReprSeniorCoding_PiyushSrivastava(int inp)
+        {
+            ArrayList arr = new ArrayList();
+            while (inp > 0)
+            {
+                if (inp % 10 != 0)
+                {
+                    arr.Add(inp % 10);
+                }
+                inp = inp / 10;
+            }
+            List<int> num = new List<int>();
+            for (int j = 0; j < arr.Count; j++)
+            {
+                num.Add(int.Parse(arr[j].ToString()));
+            }
+
+            var res = DecReprSeniorCoding_PiyushSrivastava_GetCombination(num);
+            return res;
+        }
+
+        public static int DecReprSeniorCoding_PiyushSrivastava_GetCombination(List<int> list)
+        {
+            int final = 0;
+            double count = Math.Pow(2, list.Count);
+            List<int> result = new List<int>();
+            for (int i = 1; i <= count - 1; i++)
+            {
+                string str = Convert.ToString(i, 2).PadLeft(list.Count, '0');
+                string temp = "";
+                for (int j = 0; j < str.Length; j++)
+                {
+                    if (str[j] == '1')
+                    {
+                        Console.Write(list[j]);
+                        temp += list[j].ToString();
+                    }
+                    //result.Add(temp);
+                }
+                result.Add(Convert.ToInt32(temp));
+                Console.WriteLine();
+            }
+            final = result.Max();
+            return final;
+        }
+
+        public static string DecReprSeniorCoding_BhushanBand(int N)
+        {
+            int n2 = N;
+            var digits = new List<int>();
+            int temp = 0;
+            var result = "";
+            for (; n2 != 0; n2 /= 10)
+            {
+                digits.Add(n2 % 10);
+            }
+            var arr2 = digits;
+            for (int num = 0; num < arr2.Count; num++)
+            {
+                for (int sort = 0; sort < arr2.Count - 1; sort++)
+                {
+                    if (arr2[sort] < arr2[sort + 1])
+                    {
+                        temp = arr2[sort + 1];
+                        arr2[sort + 1] = arr2[sort];
+                        arr2[sort] = temp;
+                    }
+                }
+            }
+            for (int i = 0; i < arr2.Count; i++)
+            {
+                result = result + arr2[i] + "";
+            }
+            return result;
+        }
+
+
 
         #endregion
         /// <summary>
