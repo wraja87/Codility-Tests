@@ -3,16 +3,87 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CodilityTests
 {
     class Program
     {
-        static void Main(string[] args)
-        {
-            GenStringForLongTest();
+        delegate void MyDelZero();
+        delegate void MyDel1PInt(int a);
 
+        private static void Main(string[] args)
+        {
+
+            #region Concepts
+
+            //var tcObj = new TC();
+            //AsyncDemo obj = new AsyncDemo();
+            //obj.Test();
+
+            //AloneA aaObj1 = new AloneA() { MyProperty1 = 1, MyProperty2 = "1" };
+            //AloneA aaObj2 = new AloneA() { MyProperty1 = 1, MyProperty2 = "1" };
+            //Console.WriteLine(aaObj1.Equals(aaObj2));
+            //Console.WriteLine(aaObj1 == aaObj2);
+            //AloneB abObj1 = new AloneB() { MyProperty1 = 1, MyProperty2 = 2 };
+            //AloneB abObj2 = new AloneB() { MyProperty1 = 1, MyProperty2 = 2 };
+            //Console.WriteLine(abObj1.Equals(abObj2));
+            //Console.WriteLine(abObj1 == abObj2);
+
+            Shape shObj1 = new Shape() { sides = 1, shapeName = "2", aloneB = new AloneB { MyProperty1 = 3 } };
+            Shape? shObj2 = new Shape() { sides = 1, shapeName = "2", aloneB = new AloneB { MyProperty1 = 3 } };
+            //Console.WriteLine(shObj1.Equals(shObj2));
+            //_ = shObj2?.aloneB;
+            //Console.WriteLine("Hello007".StringNumbersCount());
+            var printIncremXs = new AloneB();
+            var printIncremXsParam1 = 1;
+            var printIncremXsParam2 = 5;
+            //printIncremXs.PrintAll(printIncremXsParam1++, printIncremXsParam1++, ++printIncremXsParam2);
+
+            #region SealedClassOverrides
+            SealedTestsClass.Z zObj = new SealedTestsClass.Z();
+            //zObj.F();
+            //zObj.F2();
+            //zObj.F3();
+            //zObj.F4(); 
+            #endregion
+            #region Delegates
+            MyDelZero del1, del2, del3, del4, del5, del6, del7;
+            MyDel1PInt del1P_1, del1P_2;
+            var delSampObj = new DelegateSample();
+            del1 = DelegateSample.Method1;
+            del2 = DelegateSample.Method2;
+            del3 = del1 + del2;
+            del4 = del3 - del1;
+            del5 = del3 + delSampObj.PrintMethod1;
+            del1P_1 = delSampObj.PrintMethodParam1;
+            del1P_2 = del1P_1 + delSampObj.PrintMethodParam1Ten;
+            //del1();
+            //del2();
+            //del3();
+            //del4(); 
+            //del5();
+            //del1P_1(4);
+            //del1P_2(5);
+            #endregion
+
+            #endregion
+            #region Tests
+            //GenStringForLongTest();
+            #region SureReturns
+            //var taxLics = new string[] { "13-4679", null, string.Empty, " ", "13", "4679", "13-", "-4679", " 13 - 4679 ", "-", " - ", " - -c ", "- c- -e -" };
+            //for (int i = 0; i < taxLics.Length; i++)
+            //{
+            //    var txLic = taxLics[i];
+            //    Console.ForegroundColor = ConsoleColor.Blue;
+            //    Console.WriteLine("Tax Lic Numbe : {0}", txLic);
+            //    Console.ResetColor();
+            //    Console.WriteLine("Tax Area Code : {0}", GetTaxAreaCode(txLic));
+            //    Console.WriteLine("Outlet Number : {0}", GetOutletNumber(txLic));
+            //}
+
+            #endregion
             //var input = "213";
             //var result = solution(int.Parse(input));
 
@@ -67,6 +138,9 @@ namespace CodilityTests
             //Console.WriteLine(HighestPowerDivide(highestPowerInput));
             //int[] arr = new int[] { 9, 20, -3, -10 };
             //Console.WriteLine(GetHigeshtDeviation_Gaurav(arr));
+            var tests_StringInStringRepetitions = "asgdgasgdghdgy";//"asdas"
+            //StringInStringRepetitions(tests_StringInStringRepetitions);
+            #endregion
             #region CardsWar
             var CardA = "23A84Q";
             var CardB = "K2Q25J";
@@ -116,11 +190,80 @@ namespace CodilityTests
             //Console.WriteLine(DecReprSeniorCoding_BhushanBand(DecReprSeniorCoding_Input));
             //Console.WriteLine(DecReprSeniorCoding_InderSinghRawat(DecReprSeniorCoding_Input));
             #endregion
+            #region ABSplit
+            //var inputStr = "abbabbab";
+            //Console.WriteLine(VarunMalik_ABSplit(inputStr));
+            #endregion
+            #region Halindrome
+            var halInputStr = new string[] { "hahbshs", "ccc", "as", "hah", "nhuhnyzzfzz" };
+            var inputs4 = new string[] { "aa", "ha", "ccccccccccccccccc", "abcdefghijklmnopqrstuvwxyz" };
+            var inputs16 = new string[] { "aab","aba","cc","saizzihghoddgkqziirzmaukpg","yehvbfkkaanjatqkptlqwnordvgbjjolynfcrvqutftxab",
+                "xaviadlnfetpghjelgbbxvrelcgjzjaizoqbjcwacmvpbduyoeiysxjoqvaillxfhxtfmwhwbbxw","kdfleqjqtvvzolupsugntnexh","arxjnioupmerxbaxx",
+                "zhtrorurktlmcmjrgwjfbbwkohxyuqphgpolhwbwwgunwczplkznrvqepjzoy","gvkizjqwetkjkvdldpotgiciogugofhflycub","cedkwvgadejyekwsbqsjlkaixdzhctrqtfoydjyqq","lt",
+                "lbmmccobrzuwcnwhji","aodscqvzegygwukhbapxciwrxditzgjpnogedqhq","rlsmipsixjoavsixvwrstjmiaclutnzhuf"," klpd"};
+            //Console.WriteLine(Halindrome_Wasim(halInputStr.Length, halInputStr));
+            #endregion
+            #region PalindromeCount
+            //var inputStr1 = "jalaj naman mom boy";// "this is level 71";
+            //var input2 = inputStr1.Length;
+            //Console.WriteLine(PalindromeCount_AshishKhandelwal(inputStr1, input2));
+
+            #endregion
+            #region Decrypted String
+            (string inputStr, int returnCount) decryptInput = ("a1b1c3", 5);
+            (string inputStr, int returnCount)[] decryptInputsTest = { ("a1b1c3", 5), ("a3b2", 7) };
+            (string inputStr, int returnCount)[] decryptInputsRuns = { ("a1b1c3", 5), ("a3b2", 7) };
+            Array.ForEach(decryptInputsTest, (x) =>
+            {
+                //Console.WriteLine(DecryptString_Wasim(x.inputStr, x.returnCount));
+            });
+            (string inputStr, int returnCount) decryptDoubleInput = ("a1b1c3", 5);
+            (string inputStr, int returnCount)[] decryptDoubleInputsTest = { ("a1bd1ced3", 5), ("ab3bfg2", 8) };
+            (string inputStr, int returnCount)[] decryptDoubleInputsRuns = { ("a1b1c3", 5), ("a3b2", 7) };
+            Array.ForEach(decryptDoubleInputsTest, (x) =>
+            {
+                //Console.WriteLine(DecryptStringDoubles_Wasim(x.inputStr, x.returnCount));
+            });
+            #endregion
+            #region Special Array
+            var specArrInput = new int[] { 22, 121 };
+            var specArrTest = new int[][] { new int[] { 22, 121 }, new int[] { 12, 3 } };
+            var specArrRuns = new int[][] { };
+            Array.ForEach(specArrTest, (x) =>
+            {
+                //Console.WriteLine(SpecialArray_Wasim(x, x.Length));
+            });
+
+            #endregion
+            #region Make Palindrome
+            var palInput = "ntiin";
+            //Console.WriteLine(MakePalindrome_AkshaySuri(palInput));
+            #endregion
+            #region TreePuzzle
+            (int[] input1, int[] input2, int numCount)[] treeData1 = {
+                (new int[] { 4, 2, 5, 1, 3 }, new int[] { 1, 2, 4, 5, 3 }, 5) //4,5,2,3,1
+            };
+            Array.ForEach(treeData1, x =>
+            {
+                Console.WriteLine(TreePuzzle_Wasim(x.input1, x.input2, x.numCount));
+            });
+            #endregion
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Press ENTER to exit.");
             Console.ReadLine();
         }
 
+        #region Concepts
+
+        #region delegates
+
+
+        #endregion
+
+
+
+        #endregion
+        #region Tests
         private static void GenStringForLongTest()
         {
             for (int i = 0; i < 5; i++)
@@ -132,6 +275,27 @@ namespace CodilityTests
                 Console.WriteLine("{0} {1} {2} {3}", currentTicks, ImportDocDetailsID, tmpInt, uniqueSureTaxCertificateId);
             }
         }
+
+        private static string GetTaxAreaCode(string taxLicenseNumber)
+        {
+            var result = string.Empty;
+            if (string.IsNullOrWhiteSpace(taxLicenseNumber))
+                return result;
+            var splits = taxLicenseNumber.Split(new string[] { "-" }, StringSplitOptions.None);
+            result = splits[0].Trim();
+            return result;
+        }
+
+        private static string GetOutletNumber(string taxLicenseNumber)
+        {
+            var result = string.Empty;
+            if (string.IsNullOrWhiteSpace(taxLicenseNumber))
+                return result;
+            var splits = taxLicenseNumber.Split(new string[] { "-" }, StringSplitOptions.None);
+            result = (splits.Length > 1) ? splits[1].Trim() : string.Empty;
+            return result;
+        }
+        #endregion
         #region Cards War
 
         #region Anant Bandewar
@@ -1301,7 +1465,31 @@ namespace CodilityTests
         }
 
         #endregion
+        #region ABSplit
+        public static int VarunMalik_ABSplit(string inputStr)
+        {
+            var interval = inputStr.Split('a');
+            if (interval.Length % 3 != 1)
+            {
+                return 0;
+            }
+            var splitPoint = (interval.Length - 1) / 3;
+            if (splitPoint == 0)
+            {
+                return VarunMalik_TriangularNumber(interval[0].Length - 2);
+            }
+            else
+            {
+                return (interval[splitPoint].Length + 1) * (interval[2 * splitPoint].Length + 1);
+            }
+        }
 
+        public static int VarunMalik_TriangularNumber(int n)
+        {
+            return (n * (n + 1)) / 2;
+        }
+
+        #endregion
         #region DecReprSeniorCoding
 
         public static int DecReprSeniorCoding_AkshayPanchariya(int N)
@@ -1414,6 +1602,512 @@ namespace CodilityTests
 
 
         #endregion
+        #region Halindrome
+
+        private static int Halindrome_AneeshKhanna(int input1, string[] input2)
+        {
+            //Read only region end
+            //Write code here
+            int result = 0;
+            foreach (string testWord in input2)
+            {
+                if (testWord.Length >= 2)
+                {
+                    int cnt = ((testWord.Length / 2) - 1);
+                    bool out1 = true, out2 = true;
+                    for (int i = 0; i < testWord.Length / 2; i++)
+                    {
+                        if (testWord[i] != testWord[cnt])
+                        {
+                            out1 = false;
+                        }
+                        if (testWord[testWord.Length / 2 + i] != testWord[testWord.Length / 2])
+                        {
+                            out2 = false;
+                        }
+                        cnt--;
+                    }
+                    if (out1 && out2)
+                    {
+                        result++;
+                    }
+                }
+            }
+            return result;
+        }
+
+        private static void Halindrome_SnehaJadhav(int input1, string[] input2)
+        {
+            for (int i = 0; i < input1; i++)
+            {
+                string one = input2[i];
+                string rev_string = null;
+                string string1 = null;
+                string string2 = null;
+                string rev_string1 = null;
+                string rev_string2 = null;
+                for (int i1 = 0; i1 < one.Length; i1++)
+                {
+                    rev_string += one[i1].ToString();
+                }
+                if (rev_string == one)
+                {
+                    if (one.Length >= 2)
+                    {
+                        for (int k = 0; k < (one.Length) / 2; k++)
+                        {
+                            string1 += one[k].ToString();
+                        }
+                        for (int m = one.Length / 2; m < one.Length; m++)
+                        {
+                            string2 += one[m].ToString();
+                        }
+                        for (int l = 0; l < string1.Length; l++)
+                        {
+                            rev_string1 += string1[l].ToString();
+                        }
+                        if (rev_string1 == string1)
+                        {
+                            Console.WriteLine(string1);
+                        }
+                        for (int l1 = 0; l1 < string2.Length; l1++)
+                        {
+                            rev_string2 += string2[l1].ToString();
+                        }
+                        if (rev_string2 == string2)
+                        {
+                            Console.WriteLine(string2);
+                        }
+                    }
+                }
+            }
+        }
+
+        private static int Halindrome_PankajKulkarni(int input1, string[] input2)
+        {
+            int counter = 0;
+            string[] inputStringArray = input2;
+            if (input1 != 0)
+            {
+                for (int index = 0; index < input1; index++)
+                {
+                    string inputString = inputStringArray[index];
+                    if (isPalindrom(inputString))
+                    {
+                        counter++;
+                    }
+                    else // not palindrom
+                    {
+                        int length = inputString.Length;
+                        if (length % 2 == 0)
+                        {
+                            StringBuilder sb = new StringBuilder(inputString);
+                            int half1 = length / 2;
+                            int half2 = length - half1;
+                            char[] halfOne = new char[half1];
+                            char[] halfTwo = new char[half2];
+                            sb.CopyTo(0, halfOne, 0, half1);
+                            sb.CopyTo(half1, halfTwo, 0, half2);
+                            string[] splitString = new string[] { new string(halfOne), new string(halfTwo) };
+                            if (isPalindrom(splitString[0].ToString()) &&
+                            isPalindrom(splitString[1].ToString()))
+                            {
+                                counter++;
+                            }
+                        }
+                        else // odd length
+                        {
+                            StringBuilder sb = new StringBuilder(inputString);
+                            int half1 = (length - 1) / 2;
+                            int half2 = length - half1;
+                            char[] halfOne = new char[half1];
+                            char[] halfTwo = new char[half2];
+                            sb.CopyTo(0, halfOne, 0, half1);
+                            sb.CopyTo(half1 + 1, halfTwo, 0, half2);
+                            string[] splitString = new string[] { new string(halfOne), new string(halfTwo) };
+                            if (isPalindrom(splitString[0].ToString()) &&
+                            isPalindrom(splitString[1].ToString()))
+                            {
+                                counter++;
+                            }
+                        }
+                    }
+                }
+            }
+            return counter;
+        }
+
+        private static bool isPalindrom(string input)
+        {
+            string reverseString = string.Empty;
+            for (int i = input.Length - 1; i >= 0; i--)
+            {
+                reverseString += input[i].ToString();
+            }
+            if (reverseString == input)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private static int Halindrome_SayaliLonkar(int input1, string[] input2)
+        {
+            int halicnt = 0;
+            for (int i = 0; i < input1; i++)
+            {
+                char[] temp = input2[i].ToCharArray();
+                int length = temp.Length;
+                char[] temp1 = new char[length];
+                int k = 0, flag = 0;
+                for (int j = length - 1; j >= 0; j--)
+                {
+                    temp1[k] = temp[j];
+                    k++;
+                }
+                //Console.WriteLine(temp1 );
+                // Console.WriteLine(temp );
+                if (new string(temp1) == new string(temp))
+                {
+                    halicnt = halicnt + 1;
+                    flag = 1;
+                }
+                if (flag == 0)
+                {
+                    int length1, start2;
+                    if (length % 2 == 0)
+                    {
+                        length1 = length / 2;
+                        start2 = length1 + 1;
+                    }
+                    else
+                    {
+                        length1 = length / 2;
+                        start2 = length1 + 2;
+                    }
+                    char[] str1 = new char[length1];
+                    char[] str1_rev = new char[length1];
+                    char[] str2 = new char[length - start2];
+                    int l = length1 - 1;
+                    for (k = 0; k < length1; k++)
+                    {
+                        str1[k] = temp[k];
+                        str1_rev[k] = temp[l];
+                        l--;
+                    }
+                    //Console.WriteLine(str1);
+                    //Console.WriteLine(str1_rev);
+                    if (new string(str1) == new string(str1_rev))
+                    {
+                        halicnt = halicnt + 1;
+                        flag = 1;
+                    }
+                }
+            }
+            return halicnt;
+        }
+
+        private static int Halindrome_HeeteshPanghanti(int input1, string[] input2)
+        {
+            int halindromeCounter = 0;
+            String s1 = string.Empty;
+            String s2 = string.Empty;
+
+            string tempReverse = string.Empty;
+            if (input1 >= 1 && input1 <= 100)
+            {
+                //odd size handle
+                for (int i = 0; i < input1; i++)
+                {
+                    int midSize = input2[i].Length / 2;
+                    int low = midSize % 2 == 0 ? midSize : midSize - 1;
+                    int high = midSize % 2 == 0 ? low : low + 1;
+                    if (midSize % 2 == 0)
+                    {
+                        low = midSize;
+                        high = midSize + 1;
+                    }
+                    else
+                    {
+                        low = midSize - 1;
+                        high = midSize;
+                    }
+
+                    if (input2.Length >= 2 && input2.Length <= 100)
+                    {
+                        s1 = input2[i].Substring(0, low);
+                        s2 = input2[i].Substring(high + 1, input2[i].Length - 1);
+                        string s1copy = s1;
+                        string s2copy = s2;
+                        Array.Reverse(s1copy.ToCharArray());
+                        Array.Reverse(s2copy.ToCharArray());
+                        tempReverse = input2[i];
+                        ////reverse the string
+                        Array.Reverse(tempReverse.ToCharArray());
+                        if (input2[i].Length >= 2 && input2[i].Equals(tempReverse))
+                        {
+                            halindromeCounter++;
+                        }
+                        else if (s1.Equals(s1copy) || s2.Equals(s2copy))
+                        {
+                            halindromeCounter++;
+                        }
+                        ///Console.Write("Counter" + i);
+                        return halindromeCounter;
+                    }
+                }
+            }
+            return 0;
+        }
+
+        private static int Halindrome_AkshayUrit(int input1, string[] input2)
+        {
+            int halindromeCount = 0;
+            bool ishalindrome = false;
+            string reverseString = string.Empty;
+            if (input1 >= 1 && input1 <= 100)
+            {
+                for (int i = 0; i < input1; i++)
+                {
+                    //Checking 1st condition
+                    if (input2[i].Length >= 2)
+                    {
+                        for (int j = input2[i].Length - 1; j > 0; j--)
+                        {
+                            reverseString += input2[i][j].ToString();
+                        }
+                        if (input2[i].ToString() == reverseString)
+                        {
+                            halindromeCount++;
+                            ishalindrome = true;
+                        }
+                        if (!ishalindrome)
+                        {
+                            string s1 = string.Empty;
+                            string s2 = string.Empty;
+                            int middle;
+                            if (input2[i].Length % 2 == 0)
+                            {
+                                middle = (input2[i].Length / 2);
+                                s1 = input2[i].Substring(0, middle - 1);
+                                s2 = input2[i].Substring(middle);
+                            }
+                            else
+                            {
+                                middle = (input2[i].Length / 2) + 1;
+                                s1 = input2[i].Substring(0, middle - 1);
+                                s2 = input2[i].Substring(middle + 1);
+                            }
+                            for (int j = s1.Length - 1; j > 0; j--)
+                            {
+                                reverseString += s1[j].ToString();
+                            }
+                            if (s1.ToString() == reverseString)
+                            {
+                                halindromeCount++;
+                                ishalindrome = true;
+                            }
+                            if (!ishalindrome)
+                            {
+                                for (int j = s2.Length - 1; j > 0; j--)
+                                {
+                                    reverseString += s2[j].ToString();
+                                }
+                                if (s2.ToString() == reverseString)
+                                {
+                                    halindromeCount++;
+                                    ishalindrome = true;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            return halindromeCount;
+        }
+
+        private static int Halindrome_Wasim(int input1, string[] input2)
+        {
+            int halCount = 0;
+            for (int i = 0; i < input1; i++)
+            {
+                var inputStr = input2[i];
+                var isPal = isStringPalindrome(inputStr);
+                if (isPal)
+                {
+                    halCount++;
+                    continue;
+                }
+                else
+                {
+                    var str1 = inputStr.Substring(0, inputStr.Length / 2);
+                    var str2 = inputStr.Substring((inputStr.Length % 2 != 0) ? ((inputStr.Length + 1) / 2) : (inputStr.Length / 2));
+                    isPal = isStringPalindrome(str1);
+                    if (isPal)
+                    {
+                        halCount++;
+                        continue;
+                    }
+                    else
+                    {
+                        isPal = isStringPalindrome(str2);
+                        if (isPal)
+                        {
+                            halCount++;
+                            continue;
+                        }
+                    }
+                }
+            }
+            return halCount;
+        }
+
+        private static bool isStringPalindrome(string inputStr)
+        {
+            var res = true;
+            if (inputStr.Length < 2)
+                return false;
+            for (int i = 0; i < inputStr.Length / 2; i++)
+            {
+                if (inputStr[i] != inputStr[inputStr.Length - 1 - i])
+                    res = false;
+            }
+            return res;
+        }
+
+        private static bool isStringHalindrome(string inputStr)
+        {
+            var res = true;
+            if (inputStr.Length < 2)
+                return false;
+            var specialChar = inputStr[0];
+            for (int i = 0; i < inputStr.Length / 2; i++)
+            {
+                if (inputStr[i] != inputStr[inputStr.Length - 1 - i] || inputStr[i] != specialChar)
+                    res = false;
+            }
+            return res;
+        }
+        #endregion
+        #region Decrypted String
+        private static string DecryptString_Wasim(string input1, int input2)
+        {
+            var result = "-1";
+            var baseCount = 0;
+            for (int i = 0; i < input1.Length - 1; i++)
+            {
+                var repeatCount = int.Parse(input1[i + 1].ToString());
+                if ((baseCount + repeatCount) >= input2)
+                {
+                    result = input1[i].ToString();
+                    break;
+                }
+                else
+                    baseCount += repeatCount;
+                i++;
+            }
+            return result;
+        }
+
+        private static string DecryptStringDoubles_Wasim(string input1, int input2)
+        {
+            var result = "-1";
+            var baseCount = 0;
+            for (int i = 0; i < input1.Length - 1; i++)
+            {
+                var incCntr = 0;
+                string alphaStr = string.Empty;
+                for (int j = i; j < input1.Length; j++)
+                {
+                    if (char.IsLetter(input1[j]))
+                    {
+                        alphaStr += input1[j].ToString();
+                    }
+                    else
+                    {
+                        i = j;
+                        break;
+                    }
+                }
+                incCntr = alphaStr.Length;
+
+                var repeatCount = int.Parse(input1[i].ToString());
+                if ((baseCount + (incCntr * repeatCount)) >= input2)
+                {
+                    result = alphaStr;
+                    break;
+                }
+                else
+                    baseCount += (incCntr * repeatCount);
+
+            }
+            return result;
+        }
+        #endregion
+        #region PalindromeCount
+
+        public static int PalindromeCount_AshishKhandelwal(string input1, int input2)
+        {
+            int pelindrome = 0;
+            string[] s = input1.Split(' ');
+
+            foreach (string word in s)
+            {
+                string reverse = "";
+                for (int i = word.Length - 1; i >= 0; i--)
+                {
+                    //Console.WriteLine(word);
+                    reverse += word[i].ToString();
+                }
+                if (reverse == word)
+                {
+                    pelindrome++;
+                    //Console.WriteLine("String is Pelindrome");
+                }
+                else
+                {
+                    //Console.WriteLine("It is not");
+                }
+            }
+            return pelindrome;
+        }
+
+        #endregion
+        #region Special Array
+        private static int SpecialArray_Wasim(int[] input1, int input2)
+        {
+            var result = 0;
+            for (int i = 0; i < input2; i++)
+            {
+                var currNumber = input1[i];
+                for (int j = 1; j < currNumber; j++)
+                {
+                    var reversedNum = SpecialArray_Wasim_ReverseNumber(j);
+                    if ((j + reversedNum) == currNumber)
+                    {
+                        Console.WriteLine($"{j}:{reversedNum}");
+                        result++;
+                        break;
+                    }
+                }
+            }
+            int SpecialArray_Wasim_ReverseNumber(int inputNumber)
+            {
+                var result1 = 0;
+                for (; inputNumber > 0; inputNumber = inputNumber / 10)
+                {
+                    result1 = (result1 * 10) + (inputNumber % 10);
+                }
+                return result1;
+            }
+            return result;
+        }
+
+        #endregion
+        #region Unarranged
         /// <summary>
         /// Dhrivi A , ParityDegree => Find the highest power of 2 that divides N.
         /// </summary>
@@ -1818,6 +2512,153 @@ namespace CodilityTests
 
             Console.WriteLine("\n Largest number in the family of {0} is {1}", N.ToString(), largestnumber.ToString());
         }
+
+        public static void StringInStringRepetitions(string inputStr) // asgdgasgdghdgy
+        {
+            //    List < (string word, int reps)> repWords = new List<(string word, int reps) > ();
+            //    Action<string> repsAct = (iStr) =>
+            //    {
+            //        var occurances = inputStr.Split(new string[] { iStr }, StringSplitOptions.None).Length;
+            //        if (occurances > 2)
+            //        {
+            //            if (!repWords.Any(x => x.word == iStr))
+            //                repWords.Add((iStr, occurances -1));
+            //}
+            //};
+            //    Action<int, int> fullRepsAct = (i, j) => { };
+            //    fullRepsAct = (i, j) =>
+            //     {
+            //         //if ((i >= inputStr.Length) || (i + j >= inputStr.Length)) return;
+            //         if (i + j >= inputStr.Length)
+            //         {
+            //             if (i >= inputStr.Length - 2) return;
+            //             else fullRepsAct(++i, j = 2);
+            //         };
+
+            //         var iStr = inputStr.Substring(i, j);
+            //         var occurances = inputStr.Split(new string[] { iStr }, StringSplitOptions.None).Length;
+            //         if (occurances > 2)
+            //         {
+            //             if (!repWords.Any(x => x.word == iStr))
+            //                 repWords.Add((iStr, occurances - 1));
+            //         }
+            //         if (i + j < inputStr.Length) fullRepsAct(i, ++j);
+            //         //else fullRepsAct(++i, j = 2);
+            //     };
+
+            //    for (int i = 0; i < inputStr.Length - 1; i++)
+            //    {
+            //        for (int j = 2; i + j < inputStr.Length; j++)
+            //        {
+            //            repsAct(inputStr.Substring(i, j));
+            //        }
+            //    }
+            //    repWords.ForEach(x => { Console.WriteLine($"{x.word}:{x.reps}"); });
+            //    repWords = new List<(string word, int reps)>();
+            //    fullRepsAct(0, 2);
+            //    //repWords = repWords.OrderBy(x => x.word.Length).ThenBy(x => x.word).ToList();
+            //    repWords.ForEach(x => { Console.WriteLine($"{x.word}:{x.reps}"); });
+            //}
+        }
+        #endregion
+        #region Make Palindrome
+
+        private static int MakePalindrome_AkshaySuri(string inputStr)
+        {
+            string reverseString = string.Empty;
+            int n = inputStr.Length;
+            int count = 0;
+            for (int i = n - 1; i >= 0; i--)
+            {
+                reverseString += inputStr[i];
+            }
+            if (inputStr == reverseString)
+                return 0;
+            for (int i = 0; i < n / 2; i++)
+            {
+                int left = i;
+                int right = n - left - 1;
+                while (left < right)
+                {
+                    if (inputStr[left] == inputStr[right])
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        right--;
+                    }
+                }
+                if (left == right)
+                    return 1;
+                for (int j = right; j < n - left - 1; j++)
+                {
+                    inputStr = AkshaySuri_swap(inputStr, j, j + 1);
+                    count++;
+                }
+            }
+            return -1;
+        }
+
+        private static string AkshaySuri_swap(string inputStr, int p1, int p2)
+        {
+            var inputStrArr = inputStr.ToCharArray();
+            var tmp = inputStrArr[p1];
+            inputStrArr[p1] = inputStr[p2];
+            inputStrArr[p2] = tmp;
+            return new string(inputStrArr);
+        }
+
+        #endregion
+        #region TreePuzzle
+        private static int TreePuzzle_Wasim(int[] input1, int[] input2, int numCount)
+        {
+            var treeRoot = new CodilityTreeNode(input2[0]);
+            Action<int[], CodilityTreeNode> buildTree;
+            buildTree = (leadArr, _treeNode) => {
+                var leftEndIndex = Array.IndexOf(leadArr, _treeNode.data) - 1;
+                //var middleIndex = leadArr.Length / 2;
+                var rightStartIndex = Array.IndexOf(leadArr, _treeNode.data) + 1;
+                var treeRoot = new CodilityTreeNode(input2[0]);
+                buildTree
+            };
+            return -1;
+        }
+
+        public class CodilityTreeNode
+        {
+            public int data;
+            public CodilityTreeNode left, right;
+            public CodilityTreeNode(int i)
+            {
+                data = i;
+                left = null;
+                right = null;
+            }
+        }
+        #endregion
+    }
+
+    class Program1
+    {
+        private static void Main1(string[] args)
+        {
+        }
+    }
+
+    static class myExtensions
+    {
+
+        public static int StringNumbersCount(this string inputStr)
+        {
+            var res = 0;
+            Array.ForEach(inputStr.ToCharArray(), (x) =>
+            {
+                if (char.IsDigit(x))
+                    res++;
+            });
+            return res;
+        }
     }
 }
 
@@ -1854,3 +2695,328 @@ public class Solution
 
     }
 }
+
+interface IShape
+{
+    int MyProperty { get; set; }
+    void GetArea();
+
+    //abstract void GetVolume(); error
+}
+
+struct Shape
+{
+    public int sides;
+    public string shapeName;
+    public AloneB aloneB;
+    //public override bool Equals(object obj)
+    //{
+    //    var cmpObj = (Shape)obj;
+    //    return base.Equals(obj);
+    //}
+}
+
+struct Square : IShape
+{
+    int sideLength;
+
+    public int MyProperty
+    {
+        get => throw new NotImplementedException(); set => throw new NotImplementedException();
+    }
+
+    public void GetArea()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+class InheritanceTests
+{
+    public class TA
+    {
+        public TA()
+        {
+            Console.WriteLine("ctor TA");
+        }
+
+        void TA_NoLevelMeth()
+        {
+            Console.WriteLine("TA_NoLevelMeth");
+        }
+
+        private void TA_PrivateMeth()
+        {
+            Console.WriteLine("TA_PrivateMeth");
+        }
+
+        protected void TA_ProtMeth()
+        {
+            Console.WriteLine("TA_ProtMeth");
+        }
+
+        public void TA_PublicMeth()
+        {
+            Console.WriteLine("TA_PublicMeth");
+        }
+    }
+    protected class TB : TA
+    {
+        public TB()
+        {
+            Console.WriteLine("ctor TB");
+        }
+
+        void TB_NoLevelMeth()
+        {
+            Console.WriteLine("TB_NoLevelMeth");
+        }
+
+        private void TB_PrivateMeth()
+        {
+            Console.WriteLine("TB_PrivateMeth");
+        }
+
+        protected void TB_ProtMeth()
+        {
+            Console.WriteLine("TB_ProtMeth");
+        }
+
+        public void TB_PublicMeth()
+        {
+            Console.WriteLine("TB_PublicMeth");
+        }
+
+        public void TB_ToOverride()
+        {
+            Console.WriteLine("TB_ToOverride");
+        }
+
+    }
+    class TC : TB
+    {
+        public TC()
+        {
+            Console.WriteLine("ctor TC");
+            var tbObj = new TB();
+            //tbObj.TA_PublicMeth,tbObj.TB_PublicMeth
+
+
+        }
+
+        void TestMeth()
+        {
+            var tcObj = new TC();
+            tcObj.TA_ProtMeth();
+            //tcObj. Prot, Public
+            TB errTbObj = new TC();
+            errTbObj.TA_PublicMeth();
+            errTbObj.TB_PublicMeth();
+            errTbObj.TB_ToOverride();
+            //TC errTcObj = new TB(); error
+        }
+
+        private void TB_ToOverride()
+        {
+            Console.WriteLine("TB_ToOverride in TC");
+            //base.
+        }
+    }
+    class TD
+    {
+        public void TD_PublicMeth()
+        {
+            var tcObj = new TC();
+            //tcObj.
+            Console.WriteLine("TD_PublicMeth");
+        }
+    }
+
+
+    public class Base
+    {
+        protected virtual string WhoAmI()
+        {
+            return "Base";
+        }
+    }
+
+    public class Derived : Base
+    {
+        public new virtual string WhoAmI()
+        {
+            return "Derived";
+        }
+    }
+
+    public class AnotherDerived : Derived
+    {
+        public override string WhoAmI()
+        {
+            return "AnotherDerived";
+        }
+    }
+
+    //Diamond problem
+    public interface IAInterface
+    {
+        void aMethod();
+    }
+
+    public interface IBInterface
+    {
+        void aMethod();
+    }
+
+    public class aClass : IAInterface, IBInterface
+    {
+        public void aMethod()
+        {
+            throw new NotImplementedException();
+        }
+    }
+}
+
+class AloneA
+{
+    public int MyProperty1 { get; set; }
+    public string MyProperty2 { get; set; }
+
+    public override bool Equals(object obj)
+    {
+        var cmpObj = (AloneA)obj;
+        return this.MyProperty1 == cmpObj.MyProperty1 && this.MyProperty2 == cmpObj.MyProperty2;
+        //return this.GetHashCode() == cmpObj.GetHashCode();
+    }
+
+    public static bool operator ==(AloneA obj1, AloneA obj2)
+    {
+        return obj1.MyProperty1 == obj2.MyProperty1 && obj1.MyProperty2 == obj2.MyProperty2;
+    }
+
+    public static bool operator !=(AloneA obj1, AloneA obj2)
+    {
+        return obj1.MyProperty1 != obj2.MyProperty1 || obj1.MyProperty2 != obj2.MyProperty2;
+    }
+
+}
+
+class AloneB
+{
+    public int MyProperty1 { get; set; }
+    public int MyProperty2 { get; set; }
+
+    public void PrintAll(int x1, int x2, int x3)
+    {
+        Console.WriteLine($"x1:{x1}");
+        Console.WriteLine($"x2:{x2}");
+        Console.WriteLine($"x3:{x3}");
+    }
+}
+
+class SealedTestsClass
+{
+    public class X
+    {
+        public virtual void F() { Console.WriteLine("X.F"); }
+        public virtual void F2() { Console.WriteLine("X.F2"); }
+
+        public void F3() { Console.WriteLine("X.F3"); }
+    }
+
+    public class Y : X
+    {
+        sealed public override void F() { Console.WriteLine("Y.F"); }
+        public override void F2() { Console.WriteLine("Y.F2"); }
+
+        public new void F3() { Console.WriteLine("Y.F3"); }
+
+        public void F4() { Console.WriteLine("Y.F4"); }
+    }
+
+    public class Z : Y
+    {
+        // Attempting to override F causes compiler error CS0239.
+        // protected override void F() { Console.WriteLine("Z.F"); }
+
+        // Overriding F2 is allowed.
+        public override void F2() { Console.WriteLine("Z.F2"); }
+
+        public new void F3() { Console.WriteLine("Z.F3"); }
+    }
+}
+
+class TreeCodes
+{
+
+    void SimpleTests()
+    {
+        //BinaryTree<LinkedList<T>> tree;
+    }
+}
+
+public class DelegateSample
+{
+    public static void Method1()
+    {
+        Console.WriteLine("Method1 called");
+    }
+
+    public static void Method2()
+    {
+        Console.WriteLine("Method2 called");
+    }
+
+    public void PrintMethod1()
+    {
+        Console.WriteLine("PrintMethod1");
+    }
+
+    public void PrintMethodParam1(int p1)
+    {
+        Console.WriteLine($"PrintMethodParam1 : {p1}");
+    }
+
+    public void PrintMethodParam1Ten(int p1)
+    {
+        Console.WriteLine($"PrintMethodParam1Ten : {p1 * 10}");
+    }
+
+    public void PrintMethodParam2(int p1, int p2)
+    {
+        Console.WriteLine($"PrintMethodParam2 : {p1},{p2}");
+    }
+}
+
+
+public class AsyncDemo
+{
+    public void Test()
+    {
+
+        try
+        {
+
+            TestAsync().Wait();
+
+        }
+
+        catch (Exception ex)
+        {
+
+            Console.WriteLine(ex.Message);
+
+        }
+
+    }
+
+    private Task TestAsync()
+    {
+        Task tk = new Task(() => { throw new Exception("This is an error message"); });
+        tk.ConfigureAwait(continueOnCapturedContext: false);
+        tk.Start();
+        return tk;
+    }
+
+}
+
